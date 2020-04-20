@@ -6,6 +6,7 @@
 #include "logging.hh"
 #include "file_util.hh"
 
+//===============================================================================================================
 void usage_exit (char **argv) {
     auto paragraph = [](std::string s, int width=80) -> std::string {
         std::string acc;
@@ -25,6 +26,8 @@ void usage_exit (char **argv) {
     exit(1);
 }
 
+//===============================================================================================================
+
 std::vector<std::string> get_args(int argc, char **argv) {
     std::vector<std::string> a;
     for (int i = 0; i < argc; ++i) {
@@ -35,6 +38,8 @@ std::vector<std::string> get_args(int argc, char **argv) {
     return a;
 }
 
+//===============================================================================================================
+
 bool has_opt(int argc, char **argv, std::string opt) {
     assert(opt[0] == '-');
     for (int i = 0; i < argc; ++i) {
@@ -43,6 +48,7 @@ bool has_opt(int argc, char **argv, std::string opt) {
     }
     return false;
 }
+//===============================================================================================================
 
 std::string get_opt(int argc, char **argv,
                     std::string opt_prefix, std::string dft) {
@@ -57,11 +63,14 @@ std::string get_opt(int argc, char **argv,
     }
     return dft;
 }
+//===============================================================================================================
 
 int get_int_opt(int argc, char **argv,
                 std::string opt_prefix, int dft) {
     return std::stoi(get_opt(argc, argv, opt_prefix, std::to_string(dft)));
 }
+
+//===============================================================================================================
 
 typedef pareto_rev<int> pset;
 
